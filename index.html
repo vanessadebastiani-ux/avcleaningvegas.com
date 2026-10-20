@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>AV Cleaning Las Vegas</title>
+<meta name="description" content="House cleaning in Las Vegas and Henderson. Weekly, every-2-weeks and monthly cleaning, deep cleans and move-outs. Free in-home estimate.">
+<link rel="icon" href="logo-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HouseCleaningService","name":"AV Cleaning","url":"https://avcleaningvegas.com","areaServed":["Las Vegas, NV","Henderson, NV"],"email":"info@avcleaningvegas.com"}
+</script>
+<style>
+/* Layout: left-aligned hero with a room checklist card; content sections on a single 1120px column; the logo draws its own ellipse on load, then the same swoosh underlines the headline. */
+:root{
+  --paper:#FAFCFE; --mist:#EDF4FA; --card:#FFFFFF; --line:#D6E3EE;
+  --ink:#13283B; --soft:#4D6274;
+  --sky:#4FA8F0; --blue:#0B6CB3; --blue-press:#08568F; --on-blue:#FFFFFF;
+  --mint:#DCF3E8; --mint-ink:#1D6B4A; --warn:#9A3B1E;
+  --logo:#4FA8F0; --spark:#9FD3FA;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --r-lg:22px; --r-sm:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0B1722; --mist:#112231; --card:#152A3C; --line:#24405A;
+  --ink:#E7EFF6; --soft:#A2B5C6;
+  --sky:#6BB8F5; --blue:#2E8AD6; --blue-press:#4A9FE4; --on-blue:#FFFFFF;
+  --mint:#173A2E; --mint-ink:#86DDB4; --warn:#F2A388; --logo:#EAF4FD; --spark:#8CCBF7; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0B1722; --mist:#112231; --card:#152A3C; --line:#24405A;
+  --ink:#E7EFF6; --soft:#A2B5C6;
+  --sky:#6BB8F5; --blue:#2E8AD6; --blue-press:#4A9FE4; --on-blue:#FFFFFF;
+  --mint:#173A2E; --mint-ink:#86DDB4; --warn:#F2A388; --logo:#EAF4FD; --spark:#8CCBF7; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--body);padding-inline:16px;padding-block:0 96px}
+@media (min-width:760px){body{padding-inline:28px;padding-bottom:0}}
+.wrap{max-width:1120px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.08;text-wrap:balance;margin:0;letter-spacing:-.015em}
+h2{font-size:clamp(1.9rem,4.4vw,2.8rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:600}
+p{margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+.logo-dark{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .logo-light{display:none}:root:not([data-theme="light"]) .logo-dark{display:block}}
+:root[data-theme="dark"] .logo-light{display:none}:root[data-theme="dark"] .logo-dark{display:block}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:50px;padding:0 1.35rem;border-radius:999px;font:600 1rem/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,transform .15s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--blue);color:var(--on-blue)}
+.btn-primary:hover{background:var(--blue-press)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-line:hover{border-color:var(--sky)}
+.btn:active{transform:translateY(1px)}
+
+/* header */
+header.top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:18px}
+header.top{padding-block:14px 6px}
+header.top > a{display:block;min-width:0}
+.brand{position:relative;display:block;width:clamp(250px,27vw,320px);aspect-ratio:900/352;max-width:100%}
+.brand .layer{position:absolute;inset:0;background:var(--logo);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.brand .text{-webkit-mask-image:url(logo-text.png);mask-image:url(logo-text.png);animation:logo-text .8s .55s cubic-bezier(.2,.7,.2,1) both}
+.brand .ring{-webkit-mask-image:conic-gradient(from 40deg at 50% 50%,#000 calc(var(--sweep) - 6deg),transparent var(--sweep)),url(logo-swoosh.png);mask-image:conic-gradient(from 40deg at 50% 50%,#000 calc(var(--sweep) - 6deg),transparent var(--sweep)),url(logo-swoosh.png);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-composite:source-in;mask-composite:intersect;animation:logo-draw 1.5s .15s cubic-bezier(.65,0,.25,1) both}
+.brand .spark{position:absolute;left:9%;top:-2%;width:15%;aspect-ratio:1;color:var(--spark);animation:spark 1s 1.45s ease-out both;transform-origin:50% 50%}
+.brand .spark.small{left:76%;top:-6%;width:8%;animation-delay:1.65s}
+@property --sweep{syntax:"<angle>";inherits:false;initial-value:275deg}
+@keyframes logo-draw{from{--sweep:0deg}to{--sweep:275deg}}
+@keyframes logo-text{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes spark{0%{opacity:0;transform:scale(0) rotate(-40deg)}45%{opacity:1;transform:scale(1.15) rotate(10deg)}100%{opacity:0;transform:scale(.6) rotate(30deg)}}
+.top-actions{display:flex;gap:.5rem;align-items:center}
+.top-actions .phone{font-weight:600;color:var(--ink);text-decoration:none;margin-right:.5rem;font-variant-numeric:tabular-nums}
+@media (max-width:759px){.top-actions{display:none}}
+
+/* hero */
+.hero{display:grid;gap:40px;padding-block:28px 64px;align-items:center}
+@media (min-width:900px){.hero{grid-template-columns:1.15fr .85fr;padding-block:48px 96px}}
+.hero h1{font-size:clamp(2.6rem,7.4vw,4.6rem);font-weight:800;position:relative}
+.hero h1 .line{display:block}
+.swoosh{display:block;width:min(100%,520px);height:auto;margin-top:6px;overflow:visible}
+.swoosh path{fill:none;stroke:var(--sky);stroke-width:7;stroke-linecap:round;stroke-dasharray:640;stroke-dashoffset:0;animation:draw 1.1s 1.2s cubic-bezier(.6,.1,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
+.lede{font-size:1.2rem;color:var(--soft);max-width:34em;margin-top:18px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:28px}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:26px 0 0;padding:0;list-style:none;color:var(--soft);font-size:.95rem}
+.facts li{display:flex;align-items:center;gap:.45rem}
+.facts svg{width:18px;height:18px;color:var(--mint-ink)}
+
+.checkcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;box-shadow:0 18px 40px -24px rgba(19,40,59,.35);min-width:0}
+.checkcard header{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:14px}
+.checkcard .room{font-family:var(--display);font-size:1.35rem;font-weight:600}
+.checkcard .count{color:var(--soft);font-size:.9rem;font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:16px}
+.tabs button{font:600 .9rem var(--body);padding:.45rem .85rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--soft);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.checklist li{display:flex;gap:.7rem;align-items:flex-start}
+.tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--mint);color:var(--mint-ink);display:grid;place-items:center;margin-top:2px}
+.tick svg{width:13px;height:13px}
+.checkcard .foot{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);font-size:.92rem;color:var(--soft)}
+
+/* sections */
+section.block{padding-block:72px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:14px;max-width:40rem;margin-bottom:40px}
+.sec-head p{color:var(--soft);font-size:1.12rem}
+
+/* estimate explainer */
+.why{display:grid;gap:28px}
+@media (min-width:900px){.why{grid-template-columns:1fr 1fr;gap:64px;align-items:start}}
+.why-points{display:grid;gap:22px}
+.why-points div{display:grid;gap:4px;padding-left:18px;border-left:3px solid var(--sky)}
+.why-points p{color:var(--soft)}
+
+/* services */
+.services{display:grid;gap:18px}
+@media (min-width:760px){.services{grid-template-columns:repeat(3,1fr)}}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc p{color:var(--soft)}
+.svc .tag{align-self:flex-start;font-size:.82rem;font-weight:600;color:var(--blue);background:var(--mist);padding:.25rem .65rem;border-radius:999px}
+.tailored{margin-top:26px;color:var(--soft);font-size:1.05rem;max-width:40rem}
+
+/* before / after */
+.ba-grid{display:grid;gap:28px}
+@media (min-width:760px){.ba-grid{grid-template-columns:1fr 1fr;gap:32px 24px}}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.shot{position:relative;display:block;padding:0;border:0;margin:0;background:var(--mist);aspect-ratio:3/4;max-width:100%;overflow:hidden;cursor:zoom-in;border-radius:6px}
+.pair .shot:first-child{border-radius:var(--r-lg) 6px 6px var(--r-lg)}
+.pair .shot:last-child{border-radius:6px var(--r-lg) var(--r-lg) 6px}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.shot:hover img{transform:scale(1.03)}
+.lbl{position:absolute;left:10px;top:10px;font:700 .78rem/1 var(--body);padding:.35rem .6rem;border-radius:999px;background:rgba(255,255,255,.92);color:#13283B}
+.lbl.after{background:var(--blue);color:#fff}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(8,18,28,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px))}
+.lb img{max-width:100%;max-height:calc(100% - 120px);object-fit:contain;border-radius:12px;min-height:0}
+.lb .lb-cap{color:#fff;font-weight:600;text-align:center}
+.lb .seg{display:flex;gap:4px;background:rgba(255,255,255,.12);padding:4px;border-radius:999px}
+.lb .seg button{font:600 .95rem var(--body);color:#fff;background:transparent;border:0;border-radius:999px;padding:.6rem 1.2rem;cursor:pointer;min-height:44px}
+.lb .seg button[aria-pressed="true"]{background:#fff;color:#13283B}
+.lb .close{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:1.4rem;cursor:pointer}
+.ba-cap{margin-top:10px;color:var(--soft);font-size:.95rem}
+.more-row{display:flex;justify-content:center;margin-top:28px}
+
+/* area */
+.area{display:grid;gap:28px}
+@media (min-width:900px){.area{grid-template-columns:1fr 1fr;gap:64px}}
+.area-list{display:grid;gap:14px;list-style:none;margin:0;padding:0}
+.area-list li{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 18px}
+.area-list b{font-family:var(--display);font-size:1.15rem;font-weight:600;display:block}
+.area-list span{color:var(--soft)}
+
+/* form */
+.estimate{background:var(--mist);border-radius:28px;padding:clamp(22px,4vw,48px);margin-block:72px;border:1px solid var(--line)}
+.estimate .sec-head{margin-bottom:28px}
+form{display:grid;gap:28px}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:12px;min-width:0}
+legend{font-family:var(--display);font-size:1.2rem;font-weight:600;padding:0;margin-bottom:12px}
+legend small{font-family:var(--body);font-weight:400;font-size:.92rem;color:var(--soft);margin-left:.4rem}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:500;transition:border-color .12s,background .12s}
+.chip input:checked + span{border-color:var(--blue);background:var(--blue);color:var(--on-blue)}
+.chip input:focus-visible + span{outline:3px solid var(--sky);outline-offset:2px}
+.grid2{display:grid;gap:14px}
+@media (min-width:640px){.grid2{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font-weight:600;font-size:.95rem}
+.field label small{font-weight:400;color:var(--soft)}
+.field input,.field select,.field textarea{font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:.75rem .9rem;min-height:50px;width:100%}
+.field textarea{min-height:100px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.submit-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.submit-row p{color:var(--soft);font-size:.92rem;flex:1 1 16rem}
+.msg{border-radius:14px;padding:16px 18px;font-weight:500}
+.msg.ok{background:var(--mint);color:var(--mint-ink)}
+.msg.err{background:var(--card);border:1.5px solid var(--warn);color:var(--warn)}
+.done{display:grid;gap:12px;text-align:left}
+.done h3{font-size:1.6rem}
+
+/* reviews */
+.rv-list{display:grid;gap:16px;grid-auto-flow:column;grid-auto-columns:min(84%,340px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px;scrollbar-width:thin}
+@media (min-width:860px){.rv-list{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin-inline:0;padding-inline:0;gap:40px 48px}}
+.rv{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;min-width:0;padding-top:46px;position:relative;border-top:2px solid var(--line)}
+.rv::before{content:"\201C";position:absolute;top:-6px;left:-4px;font:800 4.4rem/1 var(--display);color:var(--sky)}
+.rv blockquote{margin:0}
+.rv p{font-size:1.08rem;line-height:1.6}
+.rv figcaption{font-weight:700;color:var(--blue);margin-top:auto}
+/* promise strip */
+.promise{display:grid;gap:18px}
+@media (min-width:760px){.promise{grid-template-columns:repeat(3,1fr)}}
+.promise div{display:grid;gap:6px;align-content:start}
+.promise .ico{width:44px;height:44px;border-radius:14px;background:var(--mist);color:var(--blue);display:grid;place-items:center;margin-bottom:6px}
+.promise .ico svg{width:22px;height:22px}
+.promise p{color:var(--soft)}
+
+/* owner */
+.owner{display:grid;gap:28px;align-items:center}
+@media (min-width:860px){.owner{grid-template-columns:320px 1fr;gap:56px}}
+.owner-photo{aspect-ratio:4/5;max-width:320px;width:100%;border-radius:160px 160px var(--r-lg) var(--r-lg);background:linear-gradient(170deg,var(--mist),var(--line));display:grid;place-items:center;color:var(--soft);font-weight:600;overflow:hidden;border:1px solid var(--line)}
+.owner-photo img{width:100%;height:100%;object-fit:cover}
+.owner blockquote{margin:0;display:grid;gap:14px;max-width:36rem}
+.owner blockquote p{font-size:1.15rem}
+.owner .sig{font-family:var(--display);font-size:1.5rem;font-weight:600;color:var(--blue)}
+.owner .sig small{display:block;font-family:var(--body);font-size:.95rem;font-weight:400;color:var(--soft)}
+
+/* closing band */
+.closing{background:var(--ink);color:var(--paper);border-radius:28px;padding:clamp(28px,5vw,56px);display:grid;gap:20px;margin-top:72px}
+@media (min-width:860px){.closing{grid-template-columns:1fr auto;align-items:center}}
+.closing h2{color:var(--paper)}
+.closing p{color:var(--paper);opacity:.8;margin-top:10px}
+.closing .row{display:flex;flex-wrap:wrap;gap:.75rem}
+.closing .btn-line{color:var(--paper);border-color:color-mix(in srgb,var(--paper) 35%,transparent)}
+.info{display:grid;gap:4px;font-size:.95rem;color:var(--soft)}
+.info b{color:var(--ink);font-weight:600}
+
+/* footer */
+footer.site{padding-block:48px 32px;border-top:1px solid var(--line);display:grid;gap:22px}
+@media (min-width:760px){footer.site{grid-template-columns:auto 1fr auto auto;gap:40px;align-items:center}}
+footer.site img{height:40px;width:auto}
+footer.site p{color:var(--soft);font-size:.95rem}
+footer.site .contact{display:grid;gap:4px;font-variant-numeric:tabular-nums}
+footer.site .contact a{color:var(--ink);text-decoration:none;font-weight:600}
+
+/* mobile action bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--line);box-shadow:0 -8px 24px -18px rgba(19,40,59,.4)}
+.bar .btn{min-height:48px;padding:0 .6rem;font-size:.95rem}
+@media (min-width:760px){.bar{display:none}}
+
+@media (prefers-reduced-motion:reduce){.swoosh path,.brand .ring,.brand .text{animation:none}.brand .spark{display:none}html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a href="#top" aria-label="AV Cleaning home">
+      <span class="brand" role="img" aria-label="AV Cleaning">
+        <span class="layer ring"></span><span class="layer text"></span>
+        <span class="spark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z"/></svg></span><span class="spark small" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z"/></svg></span>
+      </span>
+    </a>
+    <nav class="top-actions" aria-label="Contact">
+      <a class="phone js-tel" href="#">(702) 210-8380</a>
+      <a class="btn btn-line js-sms" href="#">Text us</a>
+      <a class="btn btn-primary" href="#estimate">Free estimate</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <h1><span class="line">Come home to a</span><span class="line">clean house.</span></h1>
+        <svg class="swoosh" viewBox="0 0 520 40" aria-hidden="true"><path d="M6 30 C 140 4, 360 4, 514 22"/></svg>
+        <p class="lede">House cleaning in Las Vegas and Henderson. Weekly, biweekly or monthly, plus deep cleans and move-outs. We visit your home first and give you an honest price for it.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#estimate">Get a free estimate</a>
+          <a class="btn btn-line js-tel" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call or text</a>
+        </div>
+        <ul class="facts">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Free in-home estimate</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Same-day reply</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Re-clean guarantee</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Las Vegas &amp; Henderson</li>
+        </ul>
+      </div>
+
+      <aside class="checkcard" aria-label="What a regular clean covers">
+        <header><span class="room" id="room-name">Kitchen</span><span class="count" id="room-count">7 tasks</span></header>
+        <div class="tabs" role="tablist" aria-label="Rooms">
+          <button role="tab" aria-selected="true" data-room="kitchen" id="tab-kitchen">Kitchen</button>
+          <button role="tab" aria-selected="false" data-room="bath" id="tab-bath">Bathrooms</button>
+          <button role="tab" aria-selected="false" data-room="bed" id="tab-bed">Bedrooms</button>
+          <button role="tab" aria-selected="false" data-room="living" id="tab-living">Living areas</button>
+        </div>
+        <ul class="checklist" id="checklist"></ul>
+        <p class="foot">Every regular clean covers this list. Extras are added to fit your home.</p>
+      </aside>
+    </section>
+
+    <section class="block" aria-labelledby="why-h">
+      <div class="why">
+        <div class="sec-head">
+          <h2 id="why-h">Why we price in person</h2>
+          <p>Square footage doesn't tell us how much work a home needs. A small house can need more time than a big one. So we come by, look at the home, listen to what you want done, and quote a fair price before we start.</p>
+        </div>
+        <div class="why-points">
+          <div><h3>No surprises on the first day</h3><p>You know the price before we start.</p></div>
+          <div><h3>Your list, not ours</h3><p>Tell us what matters most, whether that's the baseboards, the shower glass or inside the fridge.</p></div>
+          <div><h3>The visit is free</h3><p>There's no obligation to book.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="svc-h">
+      <div class="sec-head">
+        <h2 id="svc-h">Cleaning services</h2>
+        <p>Pick a starting point. We'll fit the details to your home at the estimate visit.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <span class="tag">Before regular service</span>
+          <h3>First-time deep clean</h3>
+          <p>A top-to-bottom reset before regular service begins. Built-up grease, soap scum, baseboards, door frames and the spots that usually get skipped.</p>
+        </article>
+        <article class="svc">
+          <span class="tag">Weekly · Biweekly · Monthly</span>
+          <h3>Regular cleaning</h3>
+          <p>The same team on a set schedule, keeping kitchens, bathrooms, floors and surfaces clean so you don't have to think about it.</p>
+        </article>
+        <article class="svc">
+          <span class="tag">One-time</span>
+          <h3>Move-in / move-out</h3>
+          <p>An empty-home clean so you can hand back the keys or settle into a fresh start.</p>
+        </article>
+      </div>
+      <p class="tailored">Every clean is tailored to your home. Want extras like inside the oven or fridge? Just tell us at your estimate.</p>
+    </section>
+
+    <section class="block" aria-labelledby="pr-h">
+      <div class="sec-head"><h2 id="pr-h">Our promise to you</h2></div>
+      <div class="promise">
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span><h3>We make it right</h3><p>If something was missed, tell us and we'll come back and re-clean it at no cost.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h3>Same-day reply</h3><p>Send a request Monday to Friday and we'll get back to you the same day.</p></div>
+        <div><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg></span><h3>Pay after the clean</h3><p>Zelle, Venmo or cash, once the job is done.</p></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="ba-h">
+      <div class="sec-head">
+        <h2 id="ba-h">Before and after</h2>
+        <p>Real homes our team cleaned. Tap any photo to see it bigger.</p>
+      </div>
+      <div class="ba-grid" id="ba-grid"></div>
+      <div class="more-row"><button class="btn btn-line" type="button" id="ba-more">See more results</button></div>
+    </section>
+
+
+    <section class="block" aria-labelledby="rv-h">
+      <div class="sec-head">
+        <h2 id="rv-h">What our clients say</h2>
+      </div>
+      <div class="rv-list">
+        <figure class="rv">
+          <blockquote><p>The attention to detail is what really sets AV Cleaning apart. Everything is always spotless, and they take care of the little things that most cleaning companies overlook. Highly recommend!</p></blockquote>
+          <figcaption>Mary C.</figcaption>
+        </figure>
+        <figure class="rv">
+          <blockquote><p>I’ve tried several cleaning services over the years, and AV Cleaning has been my favorite. They’re reliable, professional, and consistently do an amazing job. It’s such a relief coming home to a beautifully cleaned house!</p></blockquote>
+          <figcaption>Leslie G.</figcaption>
+        </figure>
+        <figure class="rv">
+          <blockquote><p>Great service from start to finish. The team showed up on time, worked efficiently, and left the house looking fantastic. Fair pricing and excellent communication. Definitely recommend.</p></blockquote>
+          <figcaption>Arthur F.</figcaption>
+        </figure>
+        <figure class="rv">
+          <blockquote><p>AV Cleaning has been taking care of our home for a while now, and the quality has never dropped. They’re thorough, trustworthy, and always go the extra mile. Couldn’t ask for a better cleaning crew.</p></blockquote>
+          <figcaption>John A.</figcaption>
+        </figure>
+        <figure class="rv">
+          <blockquote><p>There’s nothing better than walking into a fresh, clean home after a long day. The bathrooms and kitchen always look incredible, and everything feels so well taken care of. Love this team!</p></blockquote>
+          <figcaption>Linda S.</figcaption>
+        </figure>
+        <figure class="rv">
+          <blockquote><p>Super easy to schedule, great communication, and outstanding results. They pay attention to details without needing to be told what to do. Exactly what you want from a cleaning company.</p></blockquote>
+          <figcaption>Sam W.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="owner-h">
+      <div class="owner">
+        <div class="owner-photo" id="owner-photo"><img src="vanessa.jpg" alt="Vanessa, owner of AV Cleaning" width="320" height="400" loading="lazy"></div>
+        <div>
+          <h2 id="owner-h" style="margin-bottom:22px">Meet the owner</h2>
+          <blockquote>
+            <p>Hi, I'm Vanessa. I come to every estimate myself, because I want to see your home and hear what matters to you before we ever start.</p>
+            <p>My team cleans every home like it's our own. If anything isn't right, call me and we'll fix it.</p>
+            <footer class="sig">Vanessa<small>Owner, AV Cleaning</small></footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="estimate" id="estimate" aria-labelledby="est-h">
+      <div class="sec-head">
+        <h2 id="est-h">Request a free estimate</h2>
+        <p>Tell us a little about your home. We'll text you to set up a short visit.</p>
+      </div>
+
+      <form id="estimate-form" novalidate>
+        <fieldset>
+          <legend>What kind of cleaning?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="service" id="svc-first" value="First-time deep clean" checked><span>First-time deep clean</span></label>
+            <label class="chip"><input type="radio" name="service" id="svc-regular" value="Regular cleaning"><span>Regular cleaning</span></label>
+            <label class="chip"><input type="radio" name="service" id="svc-move" value="Move-in / move-out"><span>Move-in / move-out</span></label>
+            <label class="chip"><input type="radio" name="service" id="svc-unsure" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How often would you like us?</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="frequency" id="fq-weekly" value="Weekly"><span>Weekly</span></label>
+            <label class="chip"><input type="radio" name="frequency" id="fq-biweekly" value="Biweekly" checked><span>Biweekly</span></label>
+            <label class="chip"><input type="radio" name="frequency" id="fq-monthly" value="Monthly"><span>Monthly</span></label>
+            <label class="chip"><input type="radio" name="frequency" id="fq-once" value="One time only"><span>One-time</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Add-ons <small>optional</small></legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="extras" id="ex-oven" value="Inside oven"><span>Inside the oven</span></label>
+            <label class="chip"><input type="checkbox" name="extras" id="ex-fridge" value="Inside fridge"><span>Inside the fridge</span></label>
+            <label class="chip"><input type="checkbox" name="extras" id="ex-cab" value="Inside cabinets"><span>Inside cabinets</span></label>
+            <label class="chip"><input type="checkbox" name="extras" id="ex-win" value="Interior windows"><span>Interior windows</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your home</legend>
+          <div class="grid2">
+            <div class="field"><label for="f-bed">Bedrooms</label>
+              <select id="f-bed"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+            <div class="field"><label for="f-bath">Bathrooms</label>
+              <select id="f-bath"><option>1</option><option>1.5</option><option selected>2</option><option>2.5</option><option>3</option><option>3.5</option><option>4+</option></select></div>
+            <div class="field"><label for="f-addr">Street address</label><input id="f-addr" autocomplete="street-address" placeholder="1234 Desert Rose Ln"></div>
+            <div class="field"><label for="f-zip">ZIP code</label><input id="f-zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="89135"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How we reach you</legend>
+          <div class="grid2">
+            <div class="field"><label for="f-first">First name</label><input id="f-first" autocomplete="given-name" required></div>
+            <div class="field"><label for="f-last">Last name</label><input id="f-last" autocomplete="family-name"></div>
+            <div class="field"><label for="f-phone">Mobile phone</label><input id="f-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(702) 000-0000" required></div>
+            <div class="field"><label for="f-email">Email <small>optional</small></label><input id="f-email" type="email" autocomplete="email"></div>
+            <div class="field"><label for="f-time">Best time for the visit <small>optional</small></label><input id="f-time" placeholder="Weekday mornings, Saturday…"></div>
+            <div class="field"><label for="f-notes">Anything we should know? <small>optional</small></label><textarea id="f-notes" placeholder="Pets, problem areas, gate code for the visit…"></textarea></div>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" tabindex="-1" autocomplete="off"></div>
+        </fieldset>
+
+        <div id="form-msg" class="msg err" role="alert" hidden></div>
+        <div class="submit-row">
+          <button class="btn btn-primary" type="submit" id="f-submit">Request my free estimate</button>
+          <p>We reply the same day, Monday to Friday. We only use your number to schedule your estimate.</p>
+        </div>
+      </form>
+
+      <div class="done" id="form-done" hidden>
+        <div class="msg ok"><h3 id="done-title">Thanks! We got your request.</h3></div>
+        <p>We'll text you today to pick a time for your free estimate. Need us sooner? Call or text <a class="js-tel" href="#">(702) 210-8380</a>.</p>
+      </div>
+    </section>
+    <section class="closing" aria-labelledby="close-h">
+      <div><h2 id="close-h">Ready for a cleaner home?</h2><p>Book your free in-home estimate. We'll reply the same day.</p></div>
+      <div class="row"><a class="btn btn-primary" href="#estimate">Get a free estimate</a><a class="btn btn-line js-tel" href="#">(702) 210-8380</a></div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <img class="logo-light" src="logo-blue.png" alt="AV Cleaning" width="103" height="40">
+    <img class="logo-dark" src="logo-white.png" alt="AV Cleaning" width="103" height="40">
+    <p>House cleaning in Las Vegas and Henderson, NV.<br>© <span id="yr">2026</span> AV Cleaning LV</p>
+    <div class="info"><span><b>Hours</b> Mon–Fri, 8 am – 7 pm</span><span><b>Payment</b> Zelle, Venmo, cash</span></div>
+    <div class="contact">
+      <a class="js-tel" href="#">(702) 210-8380</a>
+      <a href="mailto:info@avcleaningvegas.com">info@avcleaningvegas.com</a>
+    </div>
+  </footer>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Before and after photo" hidden>
+  <button class="close" id="lb-close" type="button" aria-label="Close">✕</button>
+  <img id="lb-img" alt="">
+  <p class="lb-cap" id="lb-cap"></p>
+  <div class="seg"><button type="button" data-s="before" aria-pressed="true">Before</button><button type="button" data-s="after" aria-pressed="false">After</button></div>
+</div>
+
+<nav class="bar" aria-label="Quick contact">
+  <a class="btn btn-line js-tel" href="#">Call</a>
+  <a class="btn btn-line js-sms" href="#">Text</a>
+  <a class="btn btn-primary" href="#estimate">Free estimate</a>
+</nav>
+
+<script>
+/* ===== Edit these ===== */
+const CONFIG = {
+  phoneDisplay: "(702) 210-8380",    
+  phoneE164:    "+17022108380",
+  smsText:      "Hi AV Cleaning! I'd like a free estimate.",
+  firebase: {
+    apiKey: "AIzaSyDXiNzgwX9ubfEzmok0HOZRJTB9tEXGO78",
+    authDomain: "av-cleaning-lv.firebaseapp.com",
+    projectId: "av-cleaning-lv",
+    storageBucket: "av-cleaning-lv.firebasestorage.app",
+    messagingSenderId: "186275458742",
+    appId: "1:186275458742:web:0c75ed559cdbf257184017"
+  }
+};
+/* Before/after photos: add {before:"photos/kitchen-before.jpg", after:"photos/kitchen-after.jpg", caption:"Kitchen, Summerlin"} */
+const PHOTOS = [
+  {before:"full/oven2-before.jpg", after:"full/oven2-after.jpg", caption:"Burnt-on oven floor"},
+  {before:"full/sink-before.jpg", after:"full/sink-after.jpg", caption:"Rust-stained bathroom sink"},
+  {before:"full/ovendoor-before.jpg", after:"full/ovendoor-after.jpg", caption:"Oven door glass"},
+  {before:"full/stall-before.jpg", after:"full/stall-after.jpg", caption:"Shower stall and grout"},
+  {before:"full/laundry-before.jpg", after:"full/laundry-after.jpg", caption:"Behind the washer and dryer"},
+  {before:"full/floor-before.jpg", after:"full/floor-after.jpg", caption:"Bathroom floor"},
+  {before:"full/sink2-before.jpg", after:"full/sink2-after.jpg", caption:"Bathroom sink"},
+  {before:"full/oven-before.jpg", after:"full/oven-after.jpg", caption:"Inside the oven"}
+];
+
+/* contact links */
+document.querySelectorAll(".js-tel").forEach(a=>{a.href="tel:"+CONFIG.phoneE164; if(/\d{3}\) ?\d{3}/.test(a.textContent)) a.textContent=CONFIG.phoneDisplay;});
+document.querySelectorAll(".js-sms").forEach(a=>{a.href="sms:"+CONFIG.phoneE164+"?&body="+encodeURIComponent(CONFIG.smsText);});
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+/* room checklist */
+const ROOMS={
+  kitchen:["Countertops and backsplash wiped and sanitized","Sink and faucet scrubbed and shined","Stovetop degreased","Outside of fridge, oven, microwave and dishwasher","Inside the microwave","Cabinet fronts spot-cleaned","Floors vacuumed and mopped"],
+  bath:["Toilet cleaned inside, outside and behind","Shower and tub scrubbed","Glass doors and mirrors streak-free","Sink, faucet and counters sanitized","Towels folded, trash emptied","Floors vacuumed and mopped"],
+  bed:["Beds made, linens changed if left out","Dusting of furniture, lamps and frames","Ceiling fans and vents dusted","Mirrors cleaned","Floors vacuumed, under-bed edges included","Trash emptied"],
+  living:["Dusting of shelves, TV stand and decor","Couches vacuumed, pillows straightened","Light switches and door handles wiped","Baseboards dusted","Glass tables and doors cleaned","Floors vacuumed and mopped"]
+};
+const NAMES={kitchen:"Kitchen",bath:"Bathrooms",bed:"Bedrooms",living:"Living areas"};
+const tick='<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>';
+function showRoom(k){
+  document.getElementById("checklist").innerHTML=ROOMS[k].map(t=>`<li>${tick}<span>${t}</span></li>`).join("");
+  document.getElementById("room-name").textContent=NAMES[k];
+  document.getElementById("room-count").textContent=ROOMS[k].length+" tasks";
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.room===k));
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>showRoom(b.dataset.room)));
+showRoom("kitchen");
+
+/* before / after pairs */
+document.getElementById("ba-grid").innerHTML=PHOTOS.map((p,i)=>`
+  <figure style="margin:0"${i>=4?" hidden":""}>
+    <div class="pair">
+      <button class="shot" type="button" data-i="${i}" data-s="before" aria-label="${p.caption}, before. Open larger"><img src="${p.before}" alt="${p.caption} before cleaning" loading="lazy"><span class="lbl">Before</span></button>
+      <button class="shot" type="button" data-i="${i}" data-s="after" aria-label="${p.caption}, after. Open larger"><img src="${p.after}" alt="${p.caption} after cleaning" loading="lazy"><span class="lbl after">After</span></button>
+    </div>
+    <figcaption class="ba-cap">${p.caption}</figcaption>
+  </figure>`).join("");
+const more=document.getElementById("ba-more");
+more.addEventListener("click",()=>{const hid=document.querySelectorAll("#ba-grid figure[hidden]");if(hid.length){hid.forEach(f=>f.hidden=false);more.textContent="Show fewer";}else{document.querySelectorAll("#ba-grid figure").forEach((f,i)=>{if(i>=4)f.hidden=true});more.textContent="See more results";document.getElementById("ba-h").scrollIntoView({behavior:"smooth"});}});
+const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img"),lbCap=document.getElementById("lb-cap");
+let cur={i:0,s:"before"},lastFocus=null;
+function lbShow(){const p=PHOTOS[cur.i];lbImg.src=p[cur.s];lbImg.alt=`${p.caption} ${cur.s} cleaning`;lbCap.textContent=p.caption;document.querySelectorAll("#lb .seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.s===cur.s));}
+document.getElementById("ba-grid").addEventListener("click",e=>{const b=e.target.closest(".shot");if(!b)return;lastFocus=b;cur={i:+b.dataset.i,s:b.dataset.s};lbShow();lb.hidden=false;document.body.style.overflow="hidden";document.getElementById("lb-close").focus();});
+document.querySelectorAll("#lb .seg button").forEach(b=>b.addEventListener("click",()=>{cur.s=b.dataset.s;lbShow();}));
+function lbClose(){lb.hidden=true;document.body.style.overflow="";lastFocus&&lastFocus.focus();}
+document.getElementById("lb-close").addEventListener("click",lbClose);
+lb.addEventListener("click",e=>{if(e.target===lb)lbClose();});
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")lbClose();if(e.key==="ArrowLeft"||e.key==="ArrowRight"){cur.s=cur.s==="before"?"after":"before";lbShow();}});
+
+/* estimate form → CRM lead in the app (Firestore "contacts", status "lead") */
+const form=document.getElementById("estimate-form"), msg=document.getElementById("form-msg"), btn=document.getElementById("f-submit");
+const v=id=>document.getElementById(id).value.trim();
+function fail(t){msg.textContent=t;msg.hidden=false;msg.scrollIntoView({block:"center",behavior:"smooth"});}
+form.addEventListener("submit",async e=>{
+  e.preventDefault(); msg.hidden=true;
+  if(v("f-company")) return;                                  // spam bot
+  const first=v("f-first"), phone=v("f-phone");
+  if(!first){fail("Please add your first name.");document.getElementById("f-first").focus();return;}
+  if(phone.replace(/\D/g,"").length<10){fail("Please add a 10-digit phone number so we can text you.");document.getElementById("f-phone").focus();return;}
+  const service=form.querySelector("[name=service]:checked")?.value||"";
+  const frequency=form.querySelector("[name=frequency]:checked")?.value||"";
+  const extras=[...form.querySelectorAll("[name=extras]:checked")].map(x=>x.value);
+  const d=new Date(), added=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  const addr=[v("f-addr"),v("f-zip")].filter(Boolean).join(", ");
+  const notes=["🌐 Website estimate request",
+    "Service: "+service, "Frequency: "+frequency,
+    "Extras: "+(extras.join(", ")||"none"),
+    "Home: "+v("f-bed")+" bd / "+v("f-bath")+" ba",
+    v("f-time")&&("Best time: "+v("f-time")),
+    v("f-email")&&("Email: "+v("f-email")),
+    v("f-notes")&&("Notes: "+v("f-notes"))].filter(Boolean).join("\n");
+  const lead={id:Date.now(),first,last:v("f-last"),phone,addr,status:"lead",notes,added,
+    source:"website",email:v("f-email"),zip:v("f-zip"),service,frequency,extras,bedrooms:v("f-bed"),bathrooms:v("f-bath"),bestTime:v("f-time")};
+  btn.disabled=true; btn.textContent="Sending…";
+  try{
+    const {initializeApp}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+    const {getFirestore,doc,setDoc}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+    const db=getFirestore(initializeApp(CONFIG.firebase,"website"));
+    await setDoc(doc(db,"contacts",String(lead.id)),lead);
+    form.hidden=true;
+    document.getElementById("done-title").textContent=`Thanks, ${first}! We got your request.`;
+    document.getElementById("form-done").hidden=false;
+    document.getElementById("form-done").scrollIntoView({block:"center",behavior:"smooth"});
+  }catch(err){
+    console.error(err);
+    fail(`We couldn't send your request. Please call or text us at ${CONFIG.phoneDisplay} and we'll set up your estimate.`);
+  }finally{btn.disabled=false;btn.textContent="Request my free estimate";}
+});
+</script>
+</body>
+</html>
