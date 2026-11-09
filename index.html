@@ -581,9 +581,26 @@ document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")
 const form=document.getElementById("estimate-form"), msg=document.getElementById("form-msg"), btn=document.getElementById("f-submit");
 const v=id=>document.getElementById(id).value.trim();
 function fail(t){msg.textContent=t;msg.hidden=false;msg.scrollIntoView({block:"center",behavior:"smooth"});}
+const formOpenedAt=Date.now();
+function showDone(first){
+  form.hidden=true;
+  document.getElementById("done-title").textContent=first?`Thanks, ${first}! We got your request.`:"Thanks! We got your request.";
+  document.getElementById("form-done").hidden=false;
+  document.getElementById("form-done").scrollIntoView({block:"center",behavior:"smooth"});
+}
+/* spam check: sales pitches sent through the estimate form.
+   Score >= 2 → saved as "inactive" with a SPAM tag (kept, but not shown as a lead). */
+const SPAM_WORDS=[/\bllc\b/i,/\bdemo\b/i,/\bseo\b/i,/marketing/i,/\bagency\b/i,/more (leads|customers|clients|calls)/i,/answering service/i,/virtual (assistant|receptionist)/i,/\bai (agent|receptionist|assistant)\b/i,/google (ranking|ads|maps ranking)/i,/web ?site (design|redesign)/i,/\bbacklinks?\b/i,/\bpartnership\b/i,/(reply|respond) .{0,6}(stop|no thanks|unsubscribe)/i,/\bunsubscribe\b/i,/\bopt[- ]?out\b/i,/i (work|help) with (house )?cleaning (companies|businesses)/i,/\bbusiness owners?\b/i,/\bfunding\b|\bloan\b/i,/\bcrypto\b/i];
+function spamScore(text){
+  let s=0;
+  if(/https?:\/\/|www\.|\.(com|net|io|co|ly)\/\S/i.test(text)) s+=2;          // links
+  SPAM_WORDS.forEach(r=>{if(r.test(text)) s++;});
+  return s;
+}
 form.addEventListener("submit",async e=>{
   e.preventDefault(); msg.hidden=true;
-  if(v("f-company")) return;                                  // spam bot
+  if(v("f-company")) {showDone("");return;}                     // spam bot (hidden field filled)
+  if(Date.now()-formOpenedAt<4000) {showDone("");return;}       // spam bot (filled in under 4 seconds)
   const first=v("f-first"), phone=v("f-phone");
   if(!first){fail("Please add your first name.");document.getElementById("f-first").focus();return;}
   if(phone.replace(/\D/g,"").length<10){fail("Please add a 10-digit phone number so we can text you.");document.getElementById("f-phone").focus();return;}
@@ -600,7 +617,8 @@ form.addEventListener("submit",async e=>{
     v("f-email")&&("Email: "+v("f-email")),
     v("f-notes")&&("Notes: "+v("f-notes")),
     "SMS consent: "+(document.getElementById("f-sms").checked?"YES ("+new Date().toLocaleString("en-US")+")":"no")].filter(Boolean).join("\n");
-  const lead={id:Date.now(),first,last:v("f-last"),phone,addr,status:"lead",notes,added,
+  const spam=spamScore([v("f-notes"),v("f-time"),v("f-addr"),v("f-first"),v("f-last"),v("f-email")].join(" "))>=2;
+  const lead={id:Date.now(),first,last:v("f-last"),phone,addr,status:spam?"inactive":"lead",notes:spam?"🚫 POSSÍVEL SPAM (filtro do site) — confira antes de responder.\n"+notes:notes,added,spam,
     source:"website",email:v("f-email"),zip:v("f-zip"),service,frequency,extras,bedrooms:v("f-bed"),bathrooms:v("f-bath"),bestTime:v("f-time"),smsConsent:document.getElementById("f-sms").checked,smsConsentAt:document.getElementById("f-sms").checked?new Date().toISOString():""};
   btn.disabled=true; btn.textContent="Sending…";
   try{
@@ -608,10 +626,7 @@ form.addEventListener("submit",async e=>{
     const {getFirestore,doc,setDoc}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
     const db=getFirestore(initializeApp(CONFIG.firebase,"website"));
     await setDoc(doc(db,"contacts",String(lead.id)),lead);
-    form.hidden=true;
-    document.getElementById("done-title").textContent=`Thanks, ${first}! We got your request.`;
-    document.getElementById("form-done").hidden=false;
-    document.getElementById("form-done").scrollIntoView({block:"center",behavior:"smooth"});
+    showDone(first);
   }catch(err){
     console.error(err);
     fail(`We couldn't send your request. Please call or text us at ${CONFIG.phoneDisplay} and we'll set up your estimate.`);
