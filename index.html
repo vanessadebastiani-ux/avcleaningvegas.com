@@ -200,6 +200,10 @@ legend small{font-family:var(--body);font-weight:400;font-size:.92rem;color:var(
 .rv blockquote{margin:0}
 .rv p{font-size:1.08rem;line-height:1.6}
 .rv figcaption{font-weight:700;color:var(--blue);margin-top:auto}
+.rv-src{font-weight:500;color:var(--soft);font-size:.9rem}
+.rv-score{margin-top:8px;color:var(--soft)}
+.rv-score .rv-stars{color:#f5b301;letter-spacing:2px}
+.rv-score a{color:var(--blue);font-weight:600}
 /* promise strip */
 .promise{display:grid;gap:18px}
 @media (min-width:760px){.promise{grid-template-columns:repeat(3,1fr)}}
@@ -353,31 +357,28 @@ footer.site .contact a{color:var(--ink);text-decoration:none;font-weight:600}
     <section class="block" aria-labelledby="rv-h">
       <div class="sec-head">
         <h2 id="rv-h">What our clients say</h2>
+        <p class="rv-score"><span class="rv-stars" aria-hidden="true">★★★★★</span> <strong>5.0 on Google</strong> · <a href="https://www.google.com/maps/place/?q=place_id:ChIJn_ghZjLPyIAR8lSsKy73MGA" target="_blank" rel="noopener">See all our Google reviews</a></p>
       </div>
       <div class="rv-list">
         <figure class="rv">
-          <blockquote><p>The attention to detail is what really sets AV Cleaning apart. Everything is always spotless, and they take care of the little things that most cleaning companies overlook. Highly recommend!</p></blockquote>
-          <figcaption>Mary C.</figcaption>
+          <blockquote><p>I have been with them over a year cleaning my house twice s month and they always made awesome work. I love them!</p></blockquote>
+          <figcaption>Roberto S. <span class="rv-src">· Google review</span></figcaption>
         </figure>
         <figure class="rv">
-          <blockquote><p>I’ve tried several cleaning services over the years, and AV Cleaning has been my favorite. They’re reliable, professional, and consistently do an amazing job. It’s such a relief coming home to a beautifully cleaned house!</p></blockquote>
-          <figcaption>Leslie G.</figcaption>
+          <blockquote><p>I hired Vanessa and Juliano to help me with a move out cleaning and I’m impressed with all the details. They did an amazing job and went above and beyond my expectations!! Totally recommend them</p></blockquote>
+          <figcaption>Ana F. <span class="rv-src">· Google review</span></figcaption>
         </figure>
         <figure class="rv">
-          <blockquote><p>Great service from start to finish. The team showed up on time, worked efficiently, and left the house looking fantastic. Fair pricing and excellent communication. Definitely recommend.</p></blockquote>
-          <figcaption>Arthur F.</figcaption>
+          <blockquote><p>Vanessa and her team are absolutely amazing, the attention to detail, her commmunication and flexible time schedule are second to none. I would absolutely recommend her cleaning company!</p></blockquote>
+          <figcaption>Dorian R. <span class="rv-src">· Google review</span></figcaption>
         </figure>
         <figure class="rv">
-          <blockquote><p>AV Cleaning has been taking care of our home for a while now, and the quality has never dropped. They’re thorough, trustworthy, and always go the extra mile. Couldn’t ask for a better cleaning crew.</p></blockquote>
-          <figcaption>John A.</figcaption>
+          <blockquote><p>I have been working with AV Cleaning for almost a year and I couldn't be happier. In addition to impeccable work, the team is flexible and very easy to communicate with.</p></blockquote>
+          <figcaption>Karolyna C. <span class="rv-src">· Google review</span></figcaption>
         </figure>
         <figure class="rv">
-          <blockquote><p>There’s nothing better than walking into a fresh, clean home after a long day. The bathrooms and kitchen always look incredible, and everything feels so well taken care of. Love this team!</p></blockquote>
-          <figcaption>Linda S.</figcaption>
-        </figure>
-        <figure class="rv">
-          <blockquote><p>Super easy to schedule, great communication, and outstanding results. They pay attention to details without needing to be told what to do. Exactly what you want from a cleaning company.</p></blockquote>
-          <figcaption>Sam W.</figcaption>
+          <blockquote><p>I love Vanessa’s work! She is cheerful, dependable and extremely thorough. Always on time, and she even lives my dogs! Vanessa hasn’t missed a day, and I come home to a very clean house. Thank you, Vanessa.</p></blockquote>
+          <figcaption>Linda C. <span class="rv-src">· Google review</span></figcaption>
         </figure>
       </div>
     </section>
@@ -597,6 +598,14 @@ function spamScore(text){
   SPAM_WORDS.forEach(r=>{if(r.test(text)) s++;});
   return s;
 }
+/* email alert to info@ for every new (non-spam) estimate request; never blocks the visitor */
+function notifyNewLead(lead,notes){
+  try{
+    fetch("https://formsubmit.co/ajax/info@avcleaningvegas.com",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({_subject:"🧹 Novo pedido de orçamento: "+[lead.first,lead.last].filter(Boolean).join(" "),_template:"box",_captcha:"false",
+        Nome:[lead.first,lead.last].filter(Boolean).join(" "),Telefone:lead.phone,Endereco:lead.addr||"-",Detalhes:notes})}).catch(()=>{});
+  }catch(_){}
+}
 form.addEventListener("submit",async e=>{
   e.preventDefault(); msg.hidden=true;
   if(v("f-company")) {showDone("");return;}                     // spam bot (hidden field filled)
@@ -626,6 +635,7 @@ form.addEventListener("submit",async e=>{
     const {getFirestore,doc,setDoc}=await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
     const db=getFirestore(initializeApp(CONFIG.firebase,"website"));
     await setDoc(doc(db,"contacts",String(lead.id)),lead);
+    if(!spam) notifyNewLead(lead,notes);
     showDone(first);
   }catch(err){
     console.error(err);
