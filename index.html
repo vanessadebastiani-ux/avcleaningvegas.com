@@ -601,7 +601,7 @@ function spamScore(text){
 /* email alert to info@ for every new (non-spam) estimate request; never blocks the visitor */
 function notifyNewLead(lead,notes){
   try{
-    fetch("https://formsubmit.co/ajax/info@avcleaningvegas.com",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+    fetch("https://formsubmit.co/ajax/c6b0b0f6dd7fd752e220fd0d4de3824e",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify({_subject:"🧹 Novo pedido de orçamento: "+[lead.first,lead.last].filter(Boolean).join(" "),_template:"box",_captcha:"false",
         Nome:[lead.first,lead.last].filter(Boolean).join(" "),Telefone:lead.phone,Endereco:lead.addr||"-",Detalhes:notes})}).catch(()=>{});
   }catch(_){}
